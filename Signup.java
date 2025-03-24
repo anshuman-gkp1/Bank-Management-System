@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
@@ -272,7 +273,7 @@ public class Signup extends JFrame implements ActionListener {
                 Con con1=new Con();
                 String q="insert into signup values('"+formno+"','"+name+"','"+fname+"','"+dob+"','"+gender+"','"+email+"','"+marital+"','"+address+"','"+city+"','"+pincode+"','"+state+"')" ;
                 con1.statement.executeUpdate(q);
-                new Signup2();
+                new Signup2(first);
                 setVisible(false);
             }
             
