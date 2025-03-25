@@ -1,10 +1,10 @@
 import java.sql.*;
 
-public class Con{
+public class ConFile{
     Connection connection;
     Statement statement;
 
-    public Con(){
+    public ConFile(){
         try {
             connection=DriverManager.getConnection("jdbc:mysql://localhost:3306/bankSystem","root","pekka@14");
             statement=connection.createStatement();
