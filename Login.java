@@ -3,6 +3,7 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
 
 import javax.swing.*; // package for JFrame
 public class Login extends JFrame implements ActionListener{
@@ -104,6 +105,17 @@ public class Login extends JFrame implements ActionListener{
         // TODO Auto-generated method stub
         try{
             if(e.getSource()==button1){
+                ConFile c=new ConFile();
+                String cardno=textField2.getText();
+                String pin=passwordField3.getText();
+                String q="select * from login where cardno='"+card_no+"' and pin='"+pin+"'";
+                ResultSet resultSet=c.statement.executeQuery(q);
+                if(resultSet.next()){
+                    setVisible(false);
+                    new main_Class(pin);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Invalid Card Number or PIN");
+                }
 
             }
             else if(e.getSource()==button2){
