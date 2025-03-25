@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.Color;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -34,16 +35,18 @@ public class Deposit extends JFrame implements ActionListener {
 
         b1 = new JButton("DEPOSIT");
         b1.setBounds(700,362,150,35);
-        b1.setBackground(new Color(65,125,128));
-        b1.setForeground(Color.WHITE);
+        b1.setBackground(new Color(191, 191, 191));
+        b1.setFont(new Font("Arial",Font.BOLD,16));
+        b1.setForeground(Color.BLACK);
       b1.addActionListener(this);
         l3.add(b1);
 
 
         b2 = new JButton("BACK");
         b2.setBounds(700,406,150,35);
-        b2.setBackground(new Color(65,125,128));
-        b2.setForeground(Color.WHITE);
+        b2.setBackground(new Color(191, 191, 191));
+        b2.setFont(new Font("Arial",Font.BOLD,16));
+        b2.setForeground(Color.BLACK);
         b2.addActionListener(this);
         l3.add(b2);
 
