@@ -101,14 +101,17 @@ public class main_Class extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
-        if (e.getSource()==b1) {
-            new Deposit(pin);
-            setVisible(false);
+        // if (e.getSource()==b1) {
+        //     new Deposit(pin);
+        //     setVisible(false);
             
-        }
-        else if (e.getSource()==b7) {
-            System.exit(0); 
-        }
+        // }
+        // else if (e.getSource()==b7) {
+        //     System.exit(0); 
+        // }
+        // else if(e.getSource()==b5){
+        //     new Pin(pin);
+        // }
         throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
     
     

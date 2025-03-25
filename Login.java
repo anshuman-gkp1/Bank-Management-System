@@ -104,28 +104,28 @@ public class Login extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) { // ActionEvent get which button has clicked and according to that check and perform
         // TODO Auto-generated method stub
         try{
-            if(e.getSource()==button1){
-                ConFile c=new ConFile();
-                String cardno=textField2.getText();
-                String pin=passwordField3.getText();
-                String q="select * from login where cardno='"+card_no+"' and pin='"+pin+"'";
-                ResultSet resultSet=c.statement.executeQuery(q);
-                if(resultSet.next()){
-                    setVisible(false);
-                    new main_Class(pin);
-                }else{
-                    JOptionPane.showMessageDialog(null, "Invalid Card Number or PIN");
-                }
+            // if(e.getSource()==button1){
+            //     ConFile c=new ConFile();
+            //     String cardno=textField2.getText();
+            //     String pin=passwordField3.getText();
+            //     String q="select * from login where cardno='"+card_no+"' and pin='"+pin+"'";
+            //     ResultSet resultSet=c.statement.executeQuery(q);
+            //     if(resultSet.next()){
+            //         setVisible(false);
+            //         new main_Class(pin);
+            //     }else{
+            //         JOptionPane.showMessageDialog(null, "Invalid Card Number or PIN");
+            //     }
 
-            }
-            else if(e.getSource()==button2){
-                textField2.setText(""); // text will be cleaned after clicking the button
-                passwordField3.setText("");
+            // }
+            // else if(e.getSource()==button2){
+            //     textField2.setText(""); // text will be cleaned after clicking the button
+            //     passwordField3.setText("");
 
-            }
-            else if(e.getSource()== button3){
+            // }
+            // else if(e.getSource()== button3){
 
-            }
+            // }
         }
         catch(Exception E){
             E.printStackTrace(); // tells the error
