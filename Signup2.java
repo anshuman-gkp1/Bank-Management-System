@@ -1,7 +1,6 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.*;
 
 public class Signup2 extends JFrame implements ActionListener {
@@ -12,10 +11,10 @@ public class Signup2 extends JFrame implements ActionListener {
   String formno;
 
     Signup2(String first){
-        super("APPLICATION FORM");
+      
 
 
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icon/bank.png"));
+        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("Icon/bank.png"));
         Image i2 = i1.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
         JLabel image = new JLabel(i3);
@@ -182,10 +181,44 @@ public class Signup2 extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
+        String rel = (String) comboBox.getSelectedItem();
+        String cate = (String) comboBox2.getSelectedItem();
+        String inc = (String) comboBox3.getSelectedItem();
+        String edu = (String) comboBox4.getSelectedItem();
+        String occ = (String) comboBox5.getSelectedItem();
+        String pan = textPan.getText();
+        String aadhar = textAadhar.getText();
+        String scitizen = null;
+        if(r1.isSelected()){
+            scitizen = "Yes";
+        }else if(r2.isSelected()){
+            scitizen = "No";
+        }
+        String eAccount = null;
+        if(r3.isSelected()){
+            eAccount = "Yes";
+        }else if(r4.isSelected()){
+            eAccount = "No";
+        }
+        try {
+            if(textPan.getText().equals("") || textAadhar.getText().equals("") || scitizen == null || eAccount == null){
+                JOptionPane.showMessageDialog(null, "Fill all the  fields");
+            }else{
+                ConFile c1 = new ConFile();
+                String q = "insert into signuptwo values('"+formno+"','"+rel+"','"+cate+"','"+inc+"','"+edu+"','"+occ+"','"+pan+"','"+aadhar+"','"+scitizen+"','"+eAccount+"')";
+                c1.statement.executeUpdate(q);
+                new Signup3(formno);
+                setVisible(false);
+            }
+
+        } catch (Exception E) {
+            E.printStackTrace();
+        }
+
         
     }
-public static void main(String[] args) {
-    new Signup2("");
-}
+    public static void main(String[] args) {
+       new Signup2("");
+    }
     
 }

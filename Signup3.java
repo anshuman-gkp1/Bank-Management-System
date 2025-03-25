@@ -4,22 +4,27 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 import javax.swing.ButtonGroup;
+import javax.swing.ComboBoxEditor;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 
 public class Signup3 extends JFrame implements ActionListener{
     JRadioButton r1,r2,r3,r4;
     JCheckBox c1,c2,c3,c4,c5,c6,c7;
     JButton s,c;
-    Signup3(){
+    String formno;
+    Signup3(String formno){
+       this.formno=formno;
        //img from signup2
-       ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icon/bank.png"));
+       ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("Icon/bank.png"));
         Image i2 = i1.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
         ImageIcon i3 = new ImageIcon(i2);
         JLabel image = new JLabel(i3);
@@ -156,12 +161,14 @@ public class Signup3 extends JFrame implements ActionListener{
         s.setBackground(Color.BLACK);
         s.setForeground(Color.WHITE);
         s.setBounds(250, 720, 100, 30);
+        s.addActionListener(this);
         add(s);
         c=new JButton("Cancel");
         c.setFont(new Font("Raleway",Font.BOLD,18));
         c.setBackground(Color.BLACK);
         c.setForeground(Color.WHITE);
         c.setBounds(420, 720, 100, 30);
+        c.addActionListener(this);
         add(c);
 
         
@@ -175,7 +182,61 @@ public class Signup3 extends JFrame implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet.");
+       // throw new UnsupportedOperationException("Not supported yet.");
+       String atype=null;
+         if(r1.isSelected()){
+              atype="Savings Account";
+            }else if(r2.isSelected()){
+                atype="Fixed Deposit Account";
+            }else if(r3.isSelected()){
+                atype="Current Account";
+            }else if(r4.isSelected()){
+                atype="Reccuring current Account";
+            }
+        Random ran=new Random();
+        long first7=(ran.nextLong() % 90000000L)+1409963000000000L;
+        String cardno=""+Math.abs(first7);
+        long first3=(ran.nextLong() % 9000L)+1000L;
+        String pin=""+Math.abs(first3);
+        String fac="";
+        if(c1.isSelected()){
+            fac+="ATM CARD";
+        }
+        if(c2.isSelected()){
+            fac+="Internet Banking";
+        }
+        if(c3.isSelected()){
+            fac+="Mobile Banking";
+        }
+        if(c4.isSelected()){
+            fac+="Email Alerts";
+        }
+        if(c5.isSelected()){
+            fac+="Cheque Book";
+        }
+        if(c6.isSelected()){
+            fac+="E-Statement";
+        }
+      try{
+            if(e.getSource()==s){
+                if(atype==null){
+                    JOptionPane.showMessageDialog(null, "Fill all the required fields");
+                }else{
+                    ConFile c1=new ConFile();
+                    String q1="insert into signupthree values('"+formno+"','"+atype+"','"+cardno+"','"+pin+"','"+fac+"')";
+                    String q2="insert into login values('"+formno+"','"+cardno+"','"+pin+"')";
+                    c1.statement.executeUpdate(q1);
+                    c1.statement.executeUpdate(q2);
+                    JOptionPane.showMessageDialog(null, "Card Number: "+cardno+"\n Pin: "+pin);
+                    new Deposit(pin);
+                    setVisible(false);
+                }
+            }else if(e.getSource()==c){
+                System.exit(0);
+            }
+      }catch(Exception E){
+          E.printStackTrace();
+      } 
     }
     
     public static void main(String[] args) {
