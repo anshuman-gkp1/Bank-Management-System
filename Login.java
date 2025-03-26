@@ -96,6 +96,7 @@ public class Login extends JFrame implements ActionListener{
         setLayout(null);  // set the layout
         setSize(850,480); //frame size
         setLocation(450,200); // to open the frame at the center
+        setUndecorated(true);
         setVisible(true); //now frame will be visible
 
     }
@@ -114,7 +115,7 @@ public class Login extends JFrame implements ActionListener{
                     setVisible(false);
                     new main_Class(pin);
                 }else{
-                    JOptionPane.showMessageDialog(null, "Invalid Card Number or PIN");
+                     JOptionPane.showMessageDialog(null, "Invalid Card Number or PIN");
                 }
 
             }
