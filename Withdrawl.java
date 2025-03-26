@@ -76,6 +76,10 @@ public class Withdrawl extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        if(e.getSource()==b1){
+            
+
+
         try {
             String amount = textField.getText(); 
             Date date=new Date();
@@ -107,6 +111,10 @@ public class Withdrawl extends JFrame implements ActionListener {
         } catch (Exception E) {
             // TODO: handle exception
         }
+    }else if(e.getSource()==b2){
+        setVisible(false);
+        new main_Class(pin); 
     }
     
+}
 }
