@@ -10,8 +10,8 @@ public class Signup2 extends JFrame implements ActionListener {
   JButton next;
   String formno;
 
-    Signup2(String first){
-    //   this.first=first;
+    Signup2(String formno){
+        super("APPLICATION FORM");
 
 
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("Icon/bank.png"));
@@ -22,7 +22,7 @@ public class Signup2 extends JFrame implements ActionListener {
         add(image);
 
 
-        this.formno = first;
+        this.formno = formno;
 
         JLabel l1 = new JLabel("Page 2 :-");
         l1.setFont(new Font("Raleway", Font.BOLD, 22));
@@ -153,12 +153,12 @@ public class Signup2 extends JFrame implements ActionListener {
 
         // formno.
         JLabel l12 = new JLabel("Form No : " );
-        l12.setFont(new Font("Raleway", Font.BOLD, 18));
+        l12.setFont(new Font("Raleway", Font.BOLD, 14));
         l12.setBounds(700,10,100,30);
         add(l12);
 
         JLabel l13 = new JLabel(formno );
-        l13.setFont(new Font("Raleway", Font.BOLD, 18));
+        l13.setFont(new Font("Raleway", Font.BOLD, 14));
         l13.setBounds(760,10,30,30);
         add(l13);
 

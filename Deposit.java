@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.Color;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import java.awt.event.ActionEvent;
 public class Deposit extends JFrame implements ActionListener {
     String pin;
@@ -60,6 +61,28 @@ public class Deposit extends JFrame implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e){
+        try{
+        String amount=textField.getText();
+        Date date = new Date();
+        if(e.getSource()==b1){
+            if(textField.getText().equals("")){
+                JOptionPane.showMessageDialog(null,"Please enter the Amount to you want to Deposit");
+            }else{
+                ConFile c = new ConFile();
+                c.statement.executeUpdate("insert into bank values('"+pin+"', '"+date+"', 'Deposit', '"+amount+"')");
+                JOptionPane.showMessageDialog(null,"Rs. "+amount+" Deposited Successfully");
+                setVisible(false);
+                new main_Class(pin);
+                
+            }
+        }else if(e.getSource()==b2){
+            setVisible(false);
+            new main_Class(pin);
+           
+        }
+        }catch(Exception E){
+            E.printStackTrace();
+        }
         
     } 
     
