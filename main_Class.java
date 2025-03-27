@@ -127,6 +127,9 @@ public class main_Class extends JFrame implements ActionListener{
         else if(e.getSource()==b6){
             new BalanceEnquiry(pin);
             setVisible(false);
+        }else if(e.getSource()==b4){
+            new mini(pin);
+            setVisible(false);
         }
     
     }
