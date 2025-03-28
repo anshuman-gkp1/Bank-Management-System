@@ -91,3 +91,4 @@ public class mini extends JFrame implements ActionListener{
         new mini("");
     }
 }
+//avinash 
