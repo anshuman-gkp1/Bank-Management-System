@@ -95,7 +95,7 @@ public class Login extends JFrame implements ActionListener{
 
         setLayout(null);  // set the layout
         setSize(850,480); //frame size
-        setLocation(450,200); // to open the frame at the center
+        setLocation(290,180); // to open the frame at the center
         setUndecorated(true);
         setVisible(true); //now frame will be visible
 
